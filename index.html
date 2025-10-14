@@ -28,6 +28,7 @@
       padding: 20px;
       width: 250px;
       transition: 0.3s;
+      cursor: pointer;
     }
     .repo:hover {
       background: #21262d;
@@ -45,6 +46,7 @@
       border: none;
       margin-top: 40px;
       border-radius: 10px;
+      background-color: #0d1117;
     }
   </style>
 </head>
@@ -53,16 +55,24 @@
   <p>Choose a repository to view its HTML overview:</p>
 
   <div class="repo-list">
-    <div class="repo"><a href="#" onclick="loadRepo('https://namgyumo.github.io/Data-structure-practice/')">📘 Data Structure</a></div>
-    <div class="repo"><a href="#" onclick="loadRepo('repos/Backjoon.html')">📗 Baekjoon</a></div>
-    <div class="repo"><a href="#" onclick="loadRepo('repos/RPG-Project.html')">🎮 RPG Project</a></div>
+    <div class="repo">
+      <a href="javascript:void(0)" onclick="loadRepo('https://namgyumo.github.io/Data-structure-practice/')">📘 Data Structure</a>
+    </div>
+    <div class="repo">
+      <a href="javascript:void(0)" onclick="loadRepo('https://namgyumo.github.io/Backjoon/')">📗 Baekjoon</a>
+    </div>
+    <div class="repo">
+      <a href="javascript:void(0)" onclick="loadRepo('https://namgyumo.github.io/RPG-Project/')">🎮 RPG Project</a>
+    </div>
   </div>
 
   <iframe id="repoFrame" src=""></iframe>
 
   <script>
     function loadRepo(path) {
-      document.getElementById("repoFrame").src = path;
+      const iframe = document.getElementById("repoFrame");
+      iframe.src = path;
+      window.scrollTo({ top: iframe.offsetTop, behavior: 'smooth' });
     }
   </script>
 </body>
