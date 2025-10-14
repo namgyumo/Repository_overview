@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Structure Practice</title>
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #e6edf3;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 40px;
+    }
+    h2 {
+      color: #58a6ff;
+    }
+    a {
+      color: #9be9a8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>📘 Data Structure Practice</h2>
+  <p>This page shows your GitHub repository contents (via GitHub API).</p>
+  <div id="file-list">Loading...</div>
+
+  <script>
+    const username = "namgyumo";
+    const repoName = "Backjoon";
+
+    async function loadFiles() {
+      const res = await fetch(`https://api.github.com/repos/${username}/${repoName}/contents/`);
+      const data = await res.json();
+      const list = document.getElementById("file-list");
+      list.innerHTML = "";
+      data.forEach(item => {
+        const link = document.createElement("a");
+        link.href = item.html_url;
+        link.textContent = item.name;
+        link.target = "_blank";
+        list.appendChild(link);
+        list.appendChild(document.createElement("br"));
+      });
+    }
+    loadFiles();
+  </script>
+</body>
+</html>
